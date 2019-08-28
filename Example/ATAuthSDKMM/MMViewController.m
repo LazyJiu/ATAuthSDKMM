@@ -7,6 +7,7 @@
 //
 
 #import "MMViewController.h"
+#import <ATAuthSDK/TXCommonAuthHandler.h>
 
 @interface MMViewController ()
 
@@ -18,6 +19,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [TXCommonAuthHandler getVersion];
 }
 
 - (void)didReceiveMemoryWarning
