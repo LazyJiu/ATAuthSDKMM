@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'ATAuthSDKMM_Example' do
+  pod 'ATAuthSDKMM', :path => '../'
+
+  target 'ATAuthSDKMM_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
