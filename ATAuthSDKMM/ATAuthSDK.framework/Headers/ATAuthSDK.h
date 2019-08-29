@@ -14,5 +14,6 @@ FOUNDATION_EXPORT const unsigned char ATAuthSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ATAuthSDK/PublicHeader.h>
 
-#import "TXCommonAuthHandler.h"
+#import "TXCommonHandler.h"
 #import "TXCommonUtils.h"
+#import "TXCustomModel.h"

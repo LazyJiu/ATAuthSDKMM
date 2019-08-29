@@ -14,32 +14,21 @@
 #define TX_Auth_Result_Other_Err    @"3333"
 #define TX_Auth_Result_Param_Err    @"3344"
 
+#define TX_Login_Return_Action      @"6667" // 点击了返回按钮
+#define TX_Login_SSO_Action         @"6668" // 点击了登录按钮并成功获取了token
+#define TX_Login_Change_Action      @"6669" // 点击了切换按钮
+
 @interface TXCommonUtils : NSObject
 
-/*
- * 判断设备是否是中国联通，【注】此接口在苹果双卡双待iPhone XS Max上，双卡，且背卡槽开移动网络时判断不准确，不可使用！！
- */
 + (BOOL)isChinaUnicom;
 
-/*
- * 判断设备是否是中国移动，【注】此接口在苹果双卡双待iPhone XS Max上，双卡，且背卡槽开移动网络时判断不准确，不可使用！！
- */
 + (BOOL)isChinaMobile;
 
-/*
- * 判断设备是否是中国电信，【注】此接口在苹果双卡双待iPhone XS Max上，双卡，且背卡槽开移动网络时判断不准确，不可使用！！
- */
 + (BOOL)isChinaTelecom;
 
-/*
- * 获取设备运营商类型，【注】此接口在苹果双卡双待iPhone XS Max上，双卡且背卡槽开移动网络时判断不准确，不可使用！！
- */
 + (NSString *)getCurrentMobileNetworkName;
 
-/*
- * 判断设备运营商名称，【注】此接口在苹果双卡双待iPhone XS Max上，双卡且背卡槽开移动网络时判断不准确，不可使用！！
- */
-+ (NSString *)getCurrentCarrierkName;
++ (NSString *)getCurrentCarrierName;
 
 + (NSString *)getNetworktype;
 + (BOOL)simSupportedIsOK;
