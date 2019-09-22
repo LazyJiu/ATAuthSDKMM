@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *navColor; // 导航栏主题色
 @property (nonatomic, copy) NSAttributedString *navTitle; // 导航栏标题，内容、字体、大小、颜色
 @property (nonatomic, strong) UIImage *navBackImage; // 导航栏返回图片
+/** 是否隐藏授权页导航栏返回按钮，默认不隐藏 */
+@property (nonatomic, assign) BOOL hideNavBackItem;
 @property (nonatomic, strong) UIBarButtonItem *navMoreControl; // 导航栏右侧自定义控件，UIBarButtonItem
 
 // logo图片
@@ -38,23 +40,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 号码
 @property (nonatomic, strong) UIColor *numberColor;
-@property (nonatomic, assign) CGFloat numberSize;
+@property (nonatomic, strong) UIFont *numberFont;
 @property (nonatomic, assign) CGFloat numberTopOffetY; // number相对导航栏底部的Y轴距离
+@property (nonatomic, assign) CGFloat numberOffetX; // number相对屏幕中线的X轴偏移距离，大于0则右移，小于0则左移
 
 // 登录
-@property (nonatomic, strong) NSString *loginBtnTitle;  // loginBtn标题
-@property (nonatomic, strong) UIColor *loginBtnTitleColor;  // loginBtn文本颜色
-@property (nonatomic,strong) NSArray *loginBtnBgImgs; //loginBtn背景图片组，高度45.0pt，@[激活状态的图片,失效状态的图片,高亮状态的图片]
+@property (nonatomic, strong) NSAttributedString *loginBtnText;
+@property (nonatomic,strong) NSArray *loginBtnBgImgs; //loginBtn背景图片组，高度默认50.0pt，@[激活状态的图片,失效状态的图片,高亮状态的图片]
 @property (nonatomic, assign) CGFloat loginBtnTopOffetY; // loginBtn相对导航栏底部的Y轴距离
+@property (nonatomic, assign) CGFloat loginBtnHeight; // loginBtn高度，必须大于40.0pt
+@property (nonatomic, assign) CGFloat loginBtnLRPadding; // 按钮左右屏幕边距，按钮的宽度必须大于屏幕的一半
+/**
+ *  是否自动隐藏点击登录按钮之后授权页的转圈的 loading, 默认为 Yes，在获取登录Token成功后自动隐藏
+ *  如果设置为 NO，需要自己手动调用 [[TXCommonHandler sharedInstance] hideLoginLoading] 隐藏
+ */
+@property (nonatomic, assign) BOOL autoHideLoginLoading;
 
 // 协议
 @property (nonatomic, copy) NSArray *checkBoxImages; // checkBox图片组，[uncheckedImg,checkedImg]
 @property (nonatomic, assign) BOOL checkBoxIsChecked; // checkBox是否勾选，默认YES
+@property (nonatomic, assign) BOOL checkBoxIsHidden; // checkBox是否隐藏，默认NO
+@property (nonatomic, assign) CGFloat checkBoxWH; // checkBox大小，高宽一样，必须大于12.0pt
+
 @property (nonatomic, copy) NSArray *privacyOne; // 协议1，[协议名称,协议Url]
 @property (nonatomic, copy) NSArray *privacyTwo; // 协议2，[协议名称,协议Url]
-@property (nonatomic, copy) NSArray *privacyColors; // 协议内容颜色，[非点击文案颜色,协议颜色]
-@property (nonatomic, assign) CGFloat privacyBottomOffetY; // 协议相对全屏底部的Y轴距离！！！与其他有区别
-
+@property (nonatomic, copy) NSArray *privacyColors; // 协议内容颜色，[非点击文案颜色,点击文案颜色]
+@property (nonatomic, assign) CGFloat privacyBottomOffetY; // 协议相对屏幕底部的Y轴距离！！！与其他有区别
+@property (nonatomic, assign) NSTextAlignment privacyAlignment; // 协议文案支持居中、居左设置，默认居左
+@property (nonatomic, copy) NSString *privacyPreText; // 协议整体文案，前缀部分文案
+@property (nonatomic, copy) NSString *privacySufText; // 协议整体文案，后缀部分文案
+@property (nonatomic, strong) UIFont *privacyFont; // 协议文案字体大小
+@property (nonatomic, assign) CGFloat privacyLRPadding; // 协议整体（包括checkBox）的左右屏幕边距，当协议整体宽度小于（屏幕宽度-2*左右边距）且居中模式，则左右边距设置无效
 
 // 切换到其他方式
 @property (nonatomic, copy) NSAttributedString *changeBtnTitle; // changeBtn标题，内容、字体、大小、颜色

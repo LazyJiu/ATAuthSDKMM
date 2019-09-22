@@ -13,10 +13,19 @@
 #define TX_Auth_Result_No_Network   @"2222"
 #define TX_Auth_Result_Other_Err    @"3333"
 #define TX_Auth_Result_Param_Err    @"3344"
+#define TX_Auth_Result_Demotion     @"4445"
+#define TX_Auth_Result_Limited      @"4446"
 
+#define TX_Login_AuthPage_Show_Success      @"6665" // 授权页成功唤起事件
 #define TX_Login_Return_Action      @"6667" // 点击了返回按钮
-#define TX_Login_SSO_Action         @"6668" // 点击了登录按钮并成功获取了token
+#define TX_Login_SSO_Action         @"6668" // 点击了登录按钮(并成功获取了token)
 #define TX_Login_Change_Action      @"6669" // 点击了切换按钮
+
+typedef enum : NSInteger {
+    TX_Top_Request_Environment_Online,   // 0
+    TX_Top_Request_Environment_PreLine,
+    TX_Top_Request_Environment_Daily
+} TX_Top_Request_Environment;
 
 @interface TXCommonUtils : NSObject
 
@@ -49,5 +58,15 @@
  获取设备当前网络私网IP地址
  */
 + (NSString *)getMobilePrivateIPAddress:(BOOL)preferIPv4;
+
+/**
+ 判断当前设备蜂窝数据网络是否开启，即3G/4G
+ */
++ (BOOL)checkDeviceCellularDataEnable;
+
+/**
+ SDK的服务端环境设置，注意：此接口只在Debug模式下生效
+ */
++ (void)setSDKServerEnvironment:(TX_Top_Request_Environment )env;
 
 @end

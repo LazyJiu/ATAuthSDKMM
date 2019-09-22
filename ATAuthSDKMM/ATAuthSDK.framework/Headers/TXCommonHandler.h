@@ -88,6 +88,11 @@
 - (void)getLoginTokenWithController:(UIViewController *_Nonnull)vc model:(TXCustomModel *_Nullable)model timeout:(NSTimeInterval )timeout complete:(void (^_Nullable)(NSDictionary * _Nonnull resultDic))complete;
 
 /**
+ *  手动隐藏获取登录Token之后的等待动画，默认为自动隐藏，当设置 TXCustomModel 实例 autoHideLoginLoading = NO 时, 需要调用该方法手动隐藏
+ */
+- (void)hideLoginLoading;
+
+/**
  注销授权页，只有在客户自定义的按钮事件中调用！！
  
  @param flag 是否添加动画
